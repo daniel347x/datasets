@@ -36,5 +36,6 @@
         "**/__pycache__": true,
         "**/.pytest_cache": true,
         "**/*.egg-info": true
-    }
+    },
+    "python.linting.pylintEnabled": true
 }

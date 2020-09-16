@@ -117,6 +117,7 @@ def list_builders() -> List[str]:
   return sorted(list(registered._DATASET_REGISTRY))  # pylint: disable=protected-access
 
 
+# @tag-tfdatasets-main-009
 def builder_cls(name: str) -> Type[dataset_builder.DatasetBuilder]:
   """Fetches a `tfds.core.DatasetBuilder` class by string name.
 
@@ -147,6 +148,7 @@ def builder_cls(name: str) -> Type[dataset_builder.DatasetBuilder]:
   # pylint: enable=protected-access
 
 
+# @tag-tfdatasets-main-006
 def builder(
     name: str, **builder_init_kwargs: Any
 ) -> dataset_builder.DatasetBuilder:
@@ -173,6 +175,7 @@ def builder(
   Raises:
     DatasetNotFoundError: if `name` is unrecognized.
   """
+  # @tag-tfdatasets-main-007
   name, builder_kwargs = _dataset_name_and_kwargs_from_name_str(name)
   builder_kwargs.update(builder_init_kwargs)
   with py_utils.try_reraise(
@@ -180,6 +183,7 @@ def builder(
     return builder_cls(name)(**builder_kwargs)  # pytype: disable=not-instantiable
 
 
+# @tag-tfdatasets-main-004 - def load()
 def load(
     name: str,
     *,
@@ -310,6 +314,7 @@ def load(
   if try_gcs and gcs_utils.is_dataset_on_gcs(name):
     data_dir = gcs_utils.gcs_path("datasets")
 
+  # @tag-tfdatasets-main-005
   dbuilder = builder(name, data_dir=data_dir, **builder_kwargs)
   if download:
     download_and_prepare_kwargs = download_and_prepare_kwargs or {}
@@ -339,6 +344,7 @@ def _dataset_name_and_kwargs_from_name_str(name_str):
   name = res.group("dataset_name")
   # Normalize the name to accept CamelCase
   name = naming.camelcase_to_snakecase(name)
+  # @tag-tfdatasets-main-008
   kwargs = _kwargs_str_to_kwargs(res.group("kwargs"))
   try:
     for attr in ["config", "version"]:

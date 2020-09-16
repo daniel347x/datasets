@@ -102,6 +102,7 @@ class BuilderConfig(object):
         version=self.version or "None")
 
 
+# @tag-tfdatasets-datasetbuilder-002
 class DatasetBuilder(registered.RegisteredDataset):
   """Abstract base class for all datasets.
 
@@ -869,6 +870,7 @@ def _list_all_version_dirs(root_dir):
   ]
 
 
+# @tag-tfdatasets-datasetbuilder-003
 class FileReaderBuilder(DatasetBuilder):
   """Base class for datasets reading files.
 
@@ -906,6 +908,7 @@ class FileReaderBuilder(DatasetBuilder):
     return ds
 
 
+# @tag-tfdatasets-datasetbuilder-009
 class FileAdapterBuilder(FileReaderBuilder):
   """Base class for datasets with data generation based on file adapter."""
 
@@ -998,6 +1001,7 @@ class FileAdapterBuilder(FileReaderBuilder):
     self.info.update_splits_if_different(split_dict)
 
 
+# @tag-tfdatasets-datasetbuilder-008
 class GeneratorBasedBuilder(FileAdapterBuilder):
   """Base class for datasets with data generation based on dict generators.
 

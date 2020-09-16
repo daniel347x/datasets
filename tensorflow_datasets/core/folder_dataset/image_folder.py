@@ -36,6 +36,7 @@ _Example = collections.namedtuple('_Example', ['image_path', 'label'])
 SplitExampleDict = Dict[str, List[_Example]]
 
 
+# @tag-tfdatasets-datasetbuilder-004
 class ImageFolder(dataset_builder.DatasetBuilder):
   """Generic image classification dataset created from manual directory.
 

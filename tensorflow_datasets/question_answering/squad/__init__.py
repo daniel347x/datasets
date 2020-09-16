@@ -15,4 +15,5 @@
 
 """SQUAD: The Stanford Question Answering Dataset."""
 
+# @tag-tfdatasets-datasetbuilder-010
 from tensorflow_datasets.question_answering.squad.squad import Squad

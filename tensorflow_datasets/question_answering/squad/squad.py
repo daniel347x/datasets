@@ -127,6 +127,7 @@ class SquadConfig(tfds.core.BuilderConfig):
     self.dev_file = dev_file
 
 
+# @tag-tfdatasets-datasetbuilder-006
 class Squad(tfds.core.GeneratorBasedBuilder):
   """SQUAD: The Stanford Question Answering Dataset."""
 
@@ -183,6 +184,7 @@ class Squad(tfds.core.GeneratorBasedBuilder):
             gen_kwargs={"filepath": downloaded_files["dev"]}),
     ]
 
+  # @tag-tfdatasets-datasetbuilder-007
   def _generate_examples(self, filepath):
 
     if self.builder_config.name == "v1.1":

@@ -30,6 +30,7 @@ from tensorflow_datasets.core.utils import version
 SplitExampleDict = Dict[str, Dict[str, List[str]]]
 
 
+# @tag-tfdatasets-datasetbuilder-005
 class TranslateFolder(dataset_builder.DatasetBuilder):
   """Generic text translation dataset created from manual directory.
 

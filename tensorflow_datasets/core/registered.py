@@ -56,9 +56,11 @@ def skip_registration() -> Iterator[None]:
     _skip_registration = False
 
 
+# @tag-tfdatasets-datasetbuilder-001
 class RegisteredDataset(abc.ABC):
   """Subclasses will be registered and given a `name` property."""
 
+  # @tag-tfdatasets-datasetbuilder-011
   # Name of the dataset, automatically filled.
   name: ClassVar[str]
 
@@ -66,10 +68,11 @@ class RegisteredDataset(abc.ABC):
   # be available through tfds.{load, builder} or documented in overview.md.
   IN_DEVELOPMENT: ClassVar[bool] = False
 
-
+  # @tag-tfdatasets-datasetbuilder-013
   def __init_subclass__(cls, skip_registration=False, **kwargs):  # pylint: disable=redefined-outer-name
     super().__init_subclass__(**kwargs)
 
+    # @tag-tfdatasets-datasetbuilder-012
     # Set the name if the dataset does not define it.
     # Use __dict__ rather than getattr so subclasses are not affected.
     if not cls.__dict__.get('name'):

@@ -19,6 +19,7 @@
 from tensorflow_datasets.core import tf_compat
 tf_compat.ensure_tf_install()
 
+# @tag-tfdatasets-main-003
 from tensorflow_datasets import core
 from tensorflow_datasets.core import folder_dataset
 from tensorflow_datasets.core import download

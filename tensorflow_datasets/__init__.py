@@ -48,6 +48,7 @@ if sys.version_info[0] < 3:
   from tensorflow_datasets import __init__py2 as api
   from tensorflow_datasets.__init__py2 import *
 else:
+  # @tag-tfdatasets-main-001 - from tensorflow_datasets.__init__py3 import *
   from tensorflow_datasets import __init__py3 as api
   from tensorflow_datasets.__init__py3 import *
 

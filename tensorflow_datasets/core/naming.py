@@ -22,6 +22,7 @@ _first_cap_re = re.compile("(.)([A-Z][a-z0-9]+)")
 _all_cap_re = re.compile("([a-z0-9])([A-Z])")
 
 
+# @tag-tfdatasets-datasetbuilder-014
 def camelcase_to_snakecase(name):
   """Convert camel-case string to snake-case."""
   s1 = _first_cap_re.sub(r"\1_\2", name)
