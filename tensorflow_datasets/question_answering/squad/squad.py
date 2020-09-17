@@ -131,6 +131,7 @@ class SquadConfig(tfds.core.BuilderConfig):
 class Squad(tfds.core.GeneratorBasedBuilder):
   """SQUAD: The Stanford Question Answering Dataset."""
 
+  # @tag-squad-main-083
   BUILDER_CONFIGS = [
       SquadConfig(
           name="v1.1",
@@ -167,6 +168,7 @@ class Squad(tfds.core.GeneratorBasedBuilder):
         citation=_CITATION,
     )
 
+  # @tag-squad-main-082
   def _split_generators(self, dl_manager):
     """Returns SplitGenerators."""
     urls_to_download = {

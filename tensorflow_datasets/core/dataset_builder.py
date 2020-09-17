@@ -158,6 +158,7 @@ class DatasetBuilder(registered.RegisteredDataset):
   # displayed in the dataset documentation.
   MANUAL_DOWNLOAD_INSTRUCTIONS = None
 
+  # @tag-squad-main-070
   def __init__(self, *, data_dir=None, config=None, version=None):
     """Constructs a DatasetBuilder.
 
@@ -183,6 +184,7 @@ class DatasetBuilder(registered.RegisteredDataset):
     self._builder_config = self._create_builder_config(config)
     # Extract code version (VERSION or config)
     self._version = self._pick_version(version)
+    # @tag-squad-main-071
     # Compute the base directory (for download) and dataset/version directory.
     self._data_dir_root, self._data_dir = self._build_data_dir(data_dir)
     if tf.io.gfile.exists(self._data_dir):
@@ -282,6 +284,7 @@ class DatasetBuilder(registered.RegisteredDataset):
           "the restored dataset.")
     return self._info()
 
+  # @tag-squad-main-065
   def download_and_prepare(self, *, download_dir=None, download_config=None):
     """Downloads and prepares dataset for reading.
 
@@ -384,6 +387,7 @@ class DatasetBuilder(registered.RegisteredDataset):
           gcs_utils.download_gcs_dataset(self.info.full_name, self._data_dir)
           self.info.read_from_directory(self._data_dir)
         else:
+          # @tag-squad-main-080
           self._download_and_prepare(
               dl_manager=dl_manager,
               download_config=download_config)
@@ -420,6 +424,7 @@ class DatasetBuilder(registered.RegisteredDataset):
           self.info.write_to_directory(self._data_dir)
     self._log_download_done()
 
+  # @tag-squad-main-084
   def as_dataset(
       self,
       split=None,
@@ -524,6 +529,7 @@ class DatasetBuilder(registered.RegisteredDataset):
 
     read_config = read_config or read_config_lib.ReadConfig()
 
+    # @tag-squad-main-085
     # Create a dataset for each of the given splits
     build_single_dataset = functools.partial(
         self._build_single_dataset,
@@ -536,6 +542,7 @@ class DatasetBuilder(registered.RegisteredDataset):
     datasets = utils.map_nested(build_single_dataset, split, map_tuple=True)
     return datasets
 
+  # @tag-squad-main-086
   def _build_single_dataset(
       self,
       split,
@@ -550,6 +557,7 @@ class DatasetBuilder(registered.RegisteredDataset):
     if wants_full_dataset:
       batch_size = self.info.splits.total_num_examples or sys.maxsize
 
+    # @tag-squad-main-087
     # Build base dataset
     ds = self._as_dataset(
         split=split,
@@ -650,6 +658,7 @@ class DatasetBuilder(registered.RegisteredDataset):
     version_data_dir = os.path.join(builder_data_dir, str(self._version))
     return version_data_dir
 
+  # @tag-squad-main-072
   def _build_data_dir(self, given_data_dir):
     """Return the data directory for the current version.
 
@@ -889,6 +898,7 @@ class FileReaderBuilder(DatasetBuilder):
   def _tfrecords_reader(self):
     return tfrecords_reader.Reader(self._data_dir, self._example_specs)
 
+  # @tag-squad-main-088
   def _as_dataset(
       self,
       split=splits_lib.Split.TRAIN,
@@ -974,6 +984,7 @@ class FileAdapterBuilder(FileReaderBuilder):
     del prepare_split_kwargs
     return {}
 
+  # @tag-squad-main-081
   def _download_and_prepare(self, dl_manager, **prepare_split_kwargs):
     if not tf.io.gfile.exists(self._data_dir):
       tf.io.gfile.makedirs(self._data_dir)

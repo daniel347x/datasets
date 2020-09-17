@@ -22,6 +22,7 @@ import os
 # Github base URL
 SRC_BASE_URL = 'https://github.com/tensorflow/datasets/tree/master/'
 
+# @tag-squad-main-073
 # Directory where to store processed datasets.
 DATA_DIR = os.environ.get('TFDS_DATA_DIR',
                           os.path.join('~', 'tensorflow_datasets'))
@@ -57,5 +58,3 @@ def list_data_dirs():
   """Return the list of all registered `data_dir`."""
   all_data_dirs = _registered_data_dir | {DATA_DIR}
   return sorted(os.path.expanduser(d) for d in all_data_dirs)
-
-
