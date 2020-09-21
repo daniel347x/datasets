@@ -43,6 +43,7 @@ articles, where the answer to every question is a segment of text, or span, \
 from the corresponding reading passage, or the question might be unanswerable.
 """
 
+# @tag-squad-main-1005
 _URL = "https://rajpurkar.github.io/SQuAD-explorer/dataset/"
 _HOMEPAGE_URL = "https://rajpurkar.github.io/SQuAD-explorer/"
 
